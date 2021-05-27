@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    include_once '../Models/DB.php';
+    $conn = connectBase();
+    $stm = $conn->query("SELECT COUNT(Prix) FROM produit");
+    $response = $stm->fetch();
+    $conn = null;
+
+?>
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"
@@ -54,12 +63,14 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <h2 class="title">Ajouter Produit</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="">
+                    <form method="POST"  action="/Controllers/ProductControler.php">
                         <div class="form-row">
                             <div class="name">Référence</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="ref">
+                                    <input class="input--style-5" type="text" name="ref" value="<?php
+                                    echo $response[0] + 1;
+                                    ?>">
                    					<span class="error" ></span>
                                 </div>
                             </div>
@@ -89,7 +100,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                          <div class="name"> Catégorie </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="categorie ">
+                                    <input class="input--style-5" type="text" name="categorie">
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -105,8 +116,35 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 </div>
                             </div>
 						</div>
-						
-	
+
+                        <div class="form-row">
+                            <div class="name">Age</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="age">
+                                        <span class="error" ></span>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">Size</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="size">
+                                        <span class="error" ></span>
+                                    </div>
+                                </div>
+                        </div>
+                            <?php
+                                if(isset($_SESSION['error_product'])){
+                                ?>
+                                <span class="error">All Informations are requiredx</span>
+                            <?php   
+                                $_SESSION['error_product'] = null;   
+                                }
+                                ?>
+                            
                             <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button>
                         </div>
                     </form>

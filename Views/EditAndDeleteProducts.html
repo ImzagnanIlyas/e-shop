@@ -11,7 +11,7 @@ layout:decorate="~{layout}"
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chose what to delete</title>
+    <title>Chose what to delete or what to add</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -58,21 +58,14 @@ layout:decorate="~{layout}"
         <div class="wrapper wrapper--w995">
         	 <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Delete Products</h2>
+                    <h2 class="title">Delete Or Edit Products</h2>
                 </div>
                 
         	<table class="table table-striped table-dark">
   				<thead>
 					<tr>
       					<th scope="col">Product ID</th>
-      					<th scope="col">Product Name</th>
-<!--       					<th scope="col">Product Price</th>
-      					<th scope="col">Product Discription</th>
-      					<th scope="col">Product Image Link</th>
-      					<th scope="col">Product Status</th>
-      					<th scope="col">Product Condition</th> -->
-      					<!--       					<th scope="col">Unites in stock</th>
- -->      				<th scope="col">Product Color</th>
+		  				<th scope="col">Product Color</th>
       					<th scope="col">Sizes</th>
       					<th scope="col">Collections</th>
       					<th scope="col">Categories</th>
@@ -85,12 +78,6 @@ layout:decorate="~{layout}"
     				<tr th:each="p:${products}">
       					<th scope="row" th:text="${p.id}"></th>
       					<td  th:text="${p.prodName}"></td>
-<!--       					<td  th:text="${p.prodPrice}"></td>
-     					<td  th:text="${p.prodDiscription}"></td>
-      					<td th:text="${p.imgLink}"></td>
-     					<td  th:text="${p.prodStatus}"></td>
-     					<td  th:text="${p.prodCondition}"></td> -->
-     					<!-- <td  th:text="${p.unitInStock}"></td> -->
       					<td>
      						<div class="dropdown">
   							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
@@ -111,9 +98,7 @@ layout:decorate="~{layout}"
   							</div>
 							</div>
      					</td>
-  
-<!--      					<td th:text="${p.getCollection().collectionName}"></td>
- -->     					
+  					
      					<td>
      						<div class="dropdown">
   							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
@@ -149,143 +134,6 @@ layout:decorate="~{layout}"
         <br>
         <br>
         
-         <div class="wrapper wrapper--w600">
-        	 <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Delete Collections</h2>
-                </div>
-                
-        	<table class="table table-striped table-dark">
-  				<thead>
-					<tr>
-      					<th scope="col">Collection Name</th>
-      					<th scope="col">Collection title</th>
-      					<th scope="col">Collection discription</th>
-      					<th scope="col">Collection ImgLink</th>
-   					 </tr>
-  				</thead>
- 				 <tbody >
-    				<tr th:each="c:${collections}">
-      					<th scope="row" th:text="${c.collectionName}"></th>
-      					<td th:text="${c.title}"></td>
-      					<td th:text="${c.discription}"></td>
-     					<td th:text="${c.imgLink}"></td>
-     					<td ><a th:href="@{/deletecollection(Id=${c.collectionName})}">Delete</a></td>
-   				    </tr>
-
-  				</tbody>
-		</table>       
-      
-        </div>
-        </div>
-        
-        
-         <br>
-        <br>
-        
-         <div class="wrapper wrapper--w600">
-        	 <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Delete Categories</h2>
-                </div>
-                
-        	<table class="table table-striped table-dark">
-  				<thead>
-					<tr>
-      					<th scope="col">Category Name</th>
-      					<th scope="col">Category discription</th>
-      					<th scope="col">Category ImgLink</th>
-   					 </tr>
-  				</thead>
- 				 <tbody >
-    				<tr th:each="c:${categories}">
-      					<th scope="row" th:text="${c.categName}"></th>
-      					<td th:text="${c.categDiscription}"></td>
-      					<td th:text="${c.ImgLink}"></td>
-     					<td ><a th:href="@{/deletecategory(Id=${c.categName})}">Delete</a></td>
-   				    </tr>
-
-  				</tbody>
-		</table>       
-      
-        </div>
-        </div>
-        
-        
-        <br>
-        <br>
-        
-         <div class="wrapper wrapper--w600">
-        	 <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Delete Tag</h2>
-                </div>
-                
-        	<table class="table table-striped table-dark">
-  				<thead>
-					<tr>
-      					<th scope="col">Tag Name</th>
-   					 </tr>
-  				</thead>
- 				 <tbody >
-    				<tr th:each="t:${tags}">
-      					<th scope="row" th:text="${t.Name}"></th>
-     					<td ><a th:href="@{/deletetag(Id=${t.Name})}">Delete</a></td>
-   				    </tr>
-  				</tbody>
-		</table>       
-      
-        </div>
-        </div>
-        
-      
-         <br>
-        <br>
-        
-        <div class="wrapper wrapper--w600">
-        	 <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Delete Color</h2>
-                </div>
-                
-        	<table class="table table-striped table-dark">
-  				<thead>
-					<tr>
-      					<th scope="col">Color Name</th>
-   					 </tr>
-  				</thead>
- 				 <tbody >
-    				<tr th:each="c:${colors}">
-      					<th scope="row" th:text="${c.colorName}"></th>
-     					<td ><a th:href="@{/deletecolor(Id=${c.colorName})}">Delete</a></td>
-   				    </tr>
-  				</tbody>
-		</table>       
-      
-        </div>
-        </div>
-        
-           <br>
-        <br>
-        
-        <div class="wrapper wrapper--w600">
-        	 <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Delete Sizes</h2>
-                </div>
-                
-        	<table class="table table-striped table-dark">
-  				<thead>
-					<tr>
-      					<th scope="col">Size Name</th>
-   					 </tr>
-  				</thead>
- 				 <tbody >
-    				<tr th:each="s:${sizes}">
-      					<th scope="row" th:text="${s.size_id}"></th>
-     					<td ><a th:href="@{/deletesize(Id=${s.size_id})}">Delete</a></td>
-   				    </tr>
-  				</tbody>
 		</table>       
       
         </div>
