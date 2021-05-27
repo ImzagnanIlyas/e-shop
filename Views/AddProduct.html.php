@@ -140,7 +140,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Brand</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size">
+                                        <input class="input--style-5" type="text" name="brand">
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -154,7 +154,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 }
                                 ?>
                             <input class="input--style-5" type="hidden" name="addP" value="Y">
-                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button><br>
+                            <span> <a href="Home.html.php"> Go Home </a> </span> <br>
+                            <span> <a href="EditAndDeleteProducts.html.php"> Manage Products </a> </span>
                         </div>
                     </form>
     </div>

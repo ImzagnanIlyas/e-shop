@@ -114,7 +114,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="prixacquisition" value="<?php
-                                    echo $_GET['Prixacquisition'];
+                                    echo $_GET['P'];
                                     ?>">
                                     <span class="error" ></span>
                                 </div>
@@ -145,6 +145,17 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                     </div>
                                 </div>
                         </div>
+                        <div class="form-row">
+                            <div class="name">Brand</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="brand" value="<?php
+                                    echo $_GET['B'];
+                                    ?>">
+                                        <span class="error" ></span>
+                                    </div>
+                                </div>
+                        </div>
                             <?php
                                 if(isset($_SESSION['error_product'])){
                                 ?>
@@ -153,7 +164,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 $_SESSION['error_product'] = null;   
                                 }
                                 ?>
-                            <input class="input--style-5" type="hidden" name="XZ" value="Y">
+                            <input class="input--style-5" type="hidden" name="EditP" value="EditP">
                             <button type="submit" class="btn btn-primary btn-lg">Edit Product</button>
                         </div>
                     </form>
