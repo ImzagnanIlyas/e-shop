@@ -1,10 +1,6 @@
 <?php
     session_start();
     include_once '../Models/DB.php';
-    $conn = connectBase();
-    $stm = $conn->query("SELECT COUNT(Prix) FROM produit");
-    $response = $stm->fetch();
-    $conn = null;
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +18,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Add Products</title>
+    <title>Edit Products</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -60,7 +56,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Ajouter Produit</h2>
+                    <h2 class="title">Edit Produit</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST"  action="/Controllers/ProductControler.php">
@@ -69,7 +65,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="ref" value="<?php
-                                    echo $response[0] + 1;
+                                    echo $_GET['Ref'];
                                     ?>">
                    					<span class="error" ></span>
                                 </div>
@@ -80,7 +76,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Prix </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prix">
+                                    <input class="input--style-5" type="text" name="prix" value="<?php
+                                    echo $_GET['Prix'];
+                                    ?>">
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -90,7 +88,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Désignation</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="designation">
+                                    <input class="input--style-5" type="text" name="designation" value="<?php
+                                    echo $_GET['Des'];
+                                    ?>">
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -100,7 +100,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                          <div class="name"> Catégorie </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="categorie">
+                                    <input class="input--style-5" type="text" name="categorie" value="<?php
+                                    echo $_GET['Cat'];
+                                    ?>">
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -111,7 +113,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                         <div class="name">Prixacquisition</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prixacquisition">
+                                    <input class="input--style-5" type="text" name="prixacquisition" value="<?php
+                                    echo $_GET['Prixacquisition'];
+                                    ?>">
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -121,7 +125,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Age</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="age">
+                                        <input class="input--style-5" type="text" name="age" value="<?php
+                                    echo $_GET['Age'];
+                                    ?>">
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -131,16 +137,10 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Size</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size">
-                                        <span class="error" ></span>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Brand</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size">
+                                        <input class="input--style-5" type="text" name="size" value="<?php
+                                    echo $_GET['Size'];
+                                    ?>
+                                    ">
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -153,8 +153,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 $_SESSION['error_product'] = null;   
                                 }
                                 ?>
-                            <input class="input--style-5" type="hidden" name="addP" value="Y">
-                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button>
+                            <input class="input--style-5" type="hidden" name="XZ" value="Y">
+                            <button type="submit" class="btn btn-primary btn-lg">Edit Product</button>
                         </div>
                     </form>
     </div>

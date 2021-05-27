@@ -86,9 +86,9 @@ session_start();
                                 <a href="AddUser.html">Add User</a>
                                 <a href="#">Delete User</a>
                                 <a href="#">Modify User</a>
-                                <a href="AddProduct.html.php">Add Product</a>
-                                <a href="">Delete Product</a>
-                                <a href="#">Modify Product</a>
+                                <a href="AddProduct.html.php">Add Products</a>
+                                <a href="EditAndDeleteProducts.html.php">Manage Products</a>
+
                                 <?php
                                 }
                                 }

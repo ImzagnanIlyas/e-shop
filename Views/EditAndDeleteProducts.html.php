@@ -8,11 +8,7 @@ $stm1 = $conn->query(GetAllProduct());
 ?>
 
 <!DOCTYPE html>
-<html lang="en"
-xmlns:th="http://www.thymleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layout}"
->
+
 
 <head>
     <meta charset="UTF-8">
@@ -60,7 +56,7 @@ layout:decorate="~{layout}"
 
 </head>
 
-<body layout:fragment="content">
+<body >
 
   <section>
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
@@ -80,6 +76,9 @@ layout:decorate="~{layout}"
       					<th scope="col">Prixacquisition</th>
       					<th scope="col">Age</th>
 						<th scope="col">Size</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+             
    					 </tr>
   				</thead>
   				
@@ -87,20 +86,21 @@ layout:decorate="~{layout}"
 					<?php
                         while($response = $stm1->fetch()){
                     echo '<tr>';
-						echo '<td >'.$response['Référence'].'</td>';
+						echo '<td >'.$response['Reference'].'</td>';
                         echo '<td >'.$response['Prix'].'</td>';
-                        echo '<td >'.$response['Désignation'].'</td>';
-                        echo '<td >'.$response['Catégorie'].'</td>';
+                        echo '<td >'.$response['Designation'].'</td>';
+                        echo '<td >'.$response['Categorie'].'</td>';
                         echo '<td >'.$response['Prixacquisition'].'</td>';
                         echo '<td >'.$response['Age'].'</td>';
-                        echo '<td >'.$response['Size'].'</td>';
-						echo '<td ><a href="">Delete</a></td>';
-                        echo '<td ><a href="">Edit</a></td>';
+                        echo '<td >'.$response['Size'].'</td>';		
+                        echo '<td ><a href="/Controllers/ProductControler.php?EditP='.$response['Reference'].'">Edit</a></td>';
+                        echo '<td ><a href="/Controllers/ProductControler.php?DeleteP='.$response['Reference'].'">Delete</a></td>';
                     echo '</tr>';
-
-                    $conn = null;
                         }
+                        $conn = null;
                     ?>
+                    <span> <a href="Home.html.php"> Go Home </a> </span> <br>
+                    <span> <a href="AddProduct.html.php"> Add Product </a> </span>
   				</tbody>
 
 

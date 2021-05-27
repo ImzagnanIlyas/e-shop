@@ -51,7 +51,7 @@ function InsertProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixa
 }
 
 function DeleteProduit($Référence){
-    $sql = 'DELETE FROM produit WHERE Référence = '.$Référence.'';
+    $sql = 'DELETE FROM produit WHERE Reference = '.$Référence.'';
     return $sql;
 }
 
@@ -64,12 +64,12 @@ function UpdateProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixa
 }
 
 function GetProduct($Référence){
-    $sql = 'SELECT * FROM Produit WHERE Référence = "'.$Référence.'"';
+    $sql = 'SELECT * FROM Produit WHERE Reference = "'.$Référence.'"';
     return $sql;
 }
 
 function GetAllProduct(){
-    $sql = 'SELECT Référence, Prix, Désignation, Catégorie, Prixacquisition, Age, Size FROM produit';
+    $sql = 'SELECT Reference , Prix, Designation, Categorie, Prixacquisition, Age, Size FROM produit';
     return $sql;
 }
 //Commande
