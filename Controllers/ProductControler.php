@@ -9,6 +9,7 @@
         $conn = connectBase();
         $respnse = $conn->exec(InsertProduit($_POST['ref'],$_POST['prix'],$_POST['designation'],$_POST['categorie'],$_POST['prixacquisition']
         ,$_POST['age'],$_POST['size']));
+
         header('Location: /Views/EditAndDeleteProducts.html');
         $conn = null;
     }else{

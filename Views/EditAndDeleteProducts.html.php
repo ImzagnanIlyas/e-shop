@@ -1,3 +1,12 @@
+<?php
+include_once '../Models/DB.php';
+include('../Models/Operations.php');
+$conn = connectBase();
+$stm1 = $conn->query(GetAllProduct());
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"
@@ -11,7 +20,7 @@ layout:decorate="~{layout}"
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chose what to delete or what to add</title>
+    <title>Delete And Add</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -64,64 +73,34 @@ layout:decorate="~{layout}"
         	<table class="table table-striped table-dark">
   				<thead>
 					<tr>
-      					<th scope="col">Product ID</th>
-		  				<th scope="col">Product Color</th>
-      					<th scope="col">Sizes</th>
-      					<th scope="col">Collections</th>
-      					<th scope="col">Categories</th>
-      					<th scope="col">Tags</th>
-      					
+      					<th scope="col">Référence</th>
+		  				<th scope="col">Prix</th>
+      					<th scope="col">Désignation</th>
+      					<th scope="col">Catégorie</th>
+      					<th scope="col">Prixacquisition</th>
+      					<th scope="col">Age</th>
+						<th scope="col">Size</th>
    					 </tr>
   				</thead>
   				
  				 <tbody >
-    				<tr th:each="p:${products}">
-      					<th scope="row" th:text="${p.id}"></th>
-      					<td  th:text="${p.prodName}"></td>
-      					<td>
-     						<div class="dropdown">
-  							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-    						Colors
-  							</button>
-  							<div class="dropdown-menu">
-    							<a class="dropdown-item"th:each="C:${p.getColors()}" th:text="${C.colorName}"></a>
-  							</div>
-							</div>
-     					</td>
-     					<td>
-     						<div class="dropdown">
-  							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-    						Sizes
-  							</button>
-  							<div class="dropdown-menu">
-    							<a class="dropdown-item" th:each="s:${p.getSizes()}" th:text="${s.size_id}"></a>
-  							</div>
-							</div>
-     					</td>
-  					
-     					<td>
-     						<div class="dropdown">
-  							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-    						Categories
-  							</button>
-  							<div class="dropdown-menu">
-    							<a class="dropdown-item" th:each="c:${p.getCategories()}" th:text="${c.categName}"></a>
-  							</div>
-							</div>
-     					</td>
-     					
-     					<td>
-     						<div class="dropdown">
-  							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-    						Tags
-  							</button>
-  							<div class="dropdown-menu">
-    							<a class="dropdown-item" th:each="t:${p.getTags()}" th:text="${t.Name}"></a>
-  							</div>
-							</div>
-     					</td>
-      					<td ><a th:href="@{/deleteproduct(Id=${p.id})}">Delete</a></td>
-   				    </tr>
+					<?php
+                        while($response = $stm1->fetch()){
+                    echo '<tr>';
+						echo '<td >'.$response['Référence'].'</td>';
+                        echo '<td >'.$response['Prix'].'</td>';
+                        echo '<td >'.$response['Désignation'].'</td>';
+                        echo '<td >'.$response['Catégorie'].'</td>';
+                        echo '<td >'.$response['Prixacquisition'].'</td>';
+                        echo '<td >'.$response['Age'].'</td>';
+                        echo '<td >'.$response['Size'].'</td>';
+						echo '<td ><a href="">Delete</a></td>';
+                        echo '<td ><a href="">Edit</a></td>';
+                    echo '</tr>';
+
+                    $conn = null;
+                        }
+                    ?>
   				</tbody>
 
 
@@ -130,10 +109,6 @@ layout:decorate="~{layout}"
       
         </div>
         </div>
-        
-        <br>
-        <br>
-        
 		</table>       
       
         </div>

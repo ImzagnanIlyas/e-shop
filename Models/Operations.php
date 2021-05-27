@@ -45,7 +45,8 @@ function GetClients($id, $role, $login, $password,  $tel, $ville, $adresse, $ema
 
 //Produit
 function InsertProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixacquisition, $age, $size){
-    $sql = 'INSERT INTO produit VALUES("'.$Référence.'", "'.$Prix.'","'.$Désignation.'","'.$Catégorie.'","'.$Prixacquisition.'","'.$age.'","'.$size.'")';
+    $sql = 'INSERT INTO produit VALUES("'.$Référence.'", "'.$Prix.'","'.$Désignation.'","'.$Catégorie.'",
+    "'.$Prixacquisition.'","'.$age.'","'.$size.'")';
     return $sql;
 }
 
@@ -62,11 +63,15 @@ function UpdateProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixa
     return $sql;
 }
 
-function Select($Référence){
+function GetProduct($Référence){
     $sql = 'SELECT * FROM Produit WHERE Référence = "'.$Référence.'"';
     return $sql;
 }
 
+function GetAllProduct(){
+    $sql = 'SELECT Référence, Prix, Désignation, Catégorie, Prixacquisition, Age, Size FROM produit';
+    return $sql;
+}
 //Commande
 function InsertCommande($Num  , $Date,  $Numclt){
     $sql = 'INSERT INTO commande VALUES("'.$Num.'", "'.$Date.'","'.$Numclt.'")';
