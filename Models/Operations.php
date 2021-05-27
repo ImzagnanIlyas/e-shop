@@ -45,8 +45,8 @@ function GetClients($id, $role, $login, $password,  $tel, $ville, $adresse, $ema
 
 //Produit
 function InsertProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixacquisition, $age, $size, $brand){
-    $sql = 'INSERT INTO produit VALUES("'.$Référence.'", "'.$Prix.'","'.$Désignation.'","'.$Catégorie.'",
-    "'.$Prixacquisition.'","'.$age.'","'.$size.'","'.$brand.'")';
+    $sql = 'INSERT INTO produit VALUES('.$Référence.', '.$Prix.',"'.$Désignation.'","'.$Catégorie.'",
+    '.$Prixacquisition.','.$age.',"'.$size.'","'.$brand.'")';
     return $sql;
 }
 
