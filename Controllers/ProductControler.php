@@ -8,7 +8,7 @@
         $conn = connectBase();
         $respnse = $conn->exec(DeleteProduit($_GET['DeleteP']));
         $conn = null;
-        header('Location: /Views/EditAndDeleteProducts.html.php');
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
     }
     if(isset($_GET['EditP'])){
         $conn = connectBase();
@@ -16,16 +16,16 @@
         $r = $respnse->fetch();
         
         $string = 'Ref='.$r['Reference'].'&Prix='.$r['Prix'].'&Des='.$r['Designation'].'&Cat='.$r['Categorie'].'&P='. $r['Prixacquisition'].'&Age='.$r['Age'].'&Size='.$r['Size'].'&B='.$r['Brand'].'';
-        header('Location: /Views/EditProduct.html.php?'.$string.'');     
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php?'.$string.'');     
         $conn = null;   
     }
 if(isset($_POST['addP'])){
-    if(isset($_POST['ref']) && isset($_POST['prix']) && isset($_POST['designation'])
+    if(isset($_POST['prix']) && isset($_POST['designation'])
     && isset($_POST['categorie']) && isset($_POST['prixacquisition']) && isset($_POST['age'])
     && isset($_POST['size']) && isset($_POST['brand'])){
         $conn = connectBase();
         $respnse = $conn->exec(InsertProduit($_POST['ref'],$_POST['prix'],$_POST['designation'],$_POST['categorie'],$_POST['prixacquisition'],$_POST['age'],$_POST['size'],$_POST['brand']));
-        header('Location: /Views/EditAndDeleteProducts.html.php');
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
         $conn = null;
     }else{
         $_SESSION['error_product'] = "All Informations are required";
@@ -38,7 +38,7 @@ if(isset($_POST['addP'])){
         $conn = connectBase();
         $respnse = $conn->exec(UpdateProduit($_POST['ref'],$_POST['prix'],$_POST['designation'],
         $_POST['categorie'],$_POST['prixacquisition'],$_POST['age'],$_POST['size'],$_POST['brand']));
-        header('Location: /Views/EditAndDeleteProducts.html.php');
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
         $conn = null;
     }else{
         $_SESSION['error_product'] = "All Informations are required";

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include_once '../Models/DB.php';
+?>
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"
@@ -54,8 +58,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <h2 class="title">Ajouter Client</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="">
-                        <div class="form-row">
+                    <form method="POST"  action="/Controllers/ClientControler.php">
+                        <!-- <div class="form-row">
                             <div class="name">ID :</div>
                             <div class="value">
                                 <div class="input-group">
@@ -63,13 +67,13 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                    					<span class="error" ></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                             
                          <div class="form-row">
                             <div class="name">Login :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="login">
+                                    <input class="input--style-5" type="text" name="login" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -79,7 +83,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Password :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password">
+                                    <input class="input--style-5" type="password" name="password" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -89,7 +93,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                          <div class="name"> Password Confirmation :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password2">
+                                    <input class="input--style-5" type="password" name="password2" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -100,7 +104,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="role">
+                                        <select name="role" required>
                                             <option disabled="disabled" selected="selected">Choose role</option>
                                             <option>admin</option>
                                             <option>user </option>
@@ -114,7 +118,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                         <div class="name">Tele : </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="tele">
+                                    <input class="input--style-5" type="text" name="tele" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -123,7 +127,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Adresse :</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="adresse">
+                                        <input class="input--style-5" type="text" name="adresse" required> 
+                                        <span class="error" ></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="name">Ville :</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" name="ville" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -132,14 +145,24 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="name">Email : </div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input class="input--style-5" type="email" name="email">
+                                            <input class="input--style-5" type="email" name="email" required>
                                             <span class="error" ></span>
                                         </div>
                                     </div>
                                 </div>
+                                <?php
+                                if(isset($_SESSION['error_user'])){
+                                ?>
+                                <span class="error">Passwords do not match</span> <br>
+                            <?php   
+                                $_SESSION['error_user'] = null;   
+                                }
+                                ?>
 
-	
-                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Client</button>
+                            <input class="input--style-5" type="hidden" name="addC" value="Y">
+                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Client</button><br>
+                            <span> <a href="Home.html.php"> Go Home </a> </span> <br>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Users </a> </span>
                         </div>
                     </form>
     </div>

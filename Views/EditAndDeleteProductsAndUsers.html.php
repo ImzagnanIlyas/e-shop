@@ -3,7 +3,7 @@ include_once '../Models/DB.php';
 include('../Models/Operations.php');
 $conn = connectBase();
 $stm1 = $conn->query(GetAllProduct());
-
+$stm2 = $conn->query(GetAllClients());
 
 ?>
 
@@ -85,37 +85,80 @@ $stm1 = $conn->query(GetAllProduct());
   				
  				 <tbody >
 					<?php
-                        while($response = $stm1->fetch()){
+                        while($response1 = $stm1->fetch()){
                     echo '<tr>';
-						echo '<td >'.$response['Reference'].'</td>';
-                        echo '<td >'.$response['Prix'].'</td>';
-                        echo '<td >'.$response['Designation'].'</td>';
-                        echo '<td >'.$response['Categorie'].'</td>';
-                        echo '<td >'.$response['Prixacquisition'].'</td>';
-                        echo '<td >'.$response['Age'].'</td>';
-                        echo '<td >'.$response['Size'].'</td>';		
-                        echo '<td >'.$response['Brand'].'</td>';	
-                        echo '<td ><a href="/Controllers/ProductControler.php?EditP='.$response['Reference'].'">Edit</a></td>';
-                        echo '<td ><a href="/Controllers/ProductControler.php?DeleteP='.$response['Reference'].'">Delete</a></td>';
+						echo '<td >'.$response1['Reference'].'</td>';
+                        echo '<td >'.$response1['Prix'].'</td>';
+                        echo '<td >'.$response1['Designation'].'</td>';
+                        echo '<td >'.$response1['Categorie'].'</td>';
+                        echo '<td >'.$response1['Prixacquisition'].'</td>';
+                        echo '<td >'.$response1['Age'].'</td>';
+                        echo '<td >'.$response1['Size'].'</td>';		
+                        echo '<td >'.$response1['Brand'].'</td>';	
+                        echo '<td ><a href="/Controllers/ProductControler.php?EditP='.$response1['Reference'].'">Edit</a></td>';
+                        echo '<td ><a href="/Controllers/ProductControler.php?DeleteP='.$response1['Reference'].'">Delete</a></td>';
                     echo '</tr>';
                         }
                         $conn = null;
                     ?>
-                    <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                    <span> <a href="AddProduct.html.php"> Add Product </a> </span>
   				</tbody>
-
-
-
-		</table>       
+		</table>          
       
         </div>
         </div>
-		</table>       
+
+
+        <div class="wrapper wrapper--w995">
+        	 <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Delete Or Edit Users</h2>
+                </div>
+                
+        	<table class="table table-striped table-dark">
+  				<thead>
+					<tr>
+      					<th scope="col">ID</th>
+		  				<th scope="col">Role</th>
+      					<th scope="col">login</th>
+      					<th scope="col">Password</th>
+      					<th scope="col">Tele</th>
+      					<th scope="col">Ville</th>
+						<th scope="col">Adresse</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+             
+   					 </tr>
+  				</thead>
+  				
+ 				 <tbody >
+					<?php
+                        while($response2 = $stm2->fetch()){
+                    echo '<tr>';
+						echo '<td >'.$response2['ID'].'</td>';
+                        echo '<td >'.$response2['Role'].'</td>';
+                        echo '<td >'.$response2['login'].'</td>';
+                        echo '<td >'.$response2['password'].'</td>';
+                        echo '<td >'.$response2['Tel'].'</td>';
+                        echo '<td >'.$response2['Ville'].'</td>';
+                        echo '<td >'.$response2['Adresse'].'</td>';		
+                        echo '<td >'.$response2['Email'].'</td>';	
+                        echo '<td ><a href="/Controllers/ClientControler.php?EditC='.$response2['ID'].'">Edit</a></td>';
+                        echo '<td ><a href="/Controllers/ClientControler.php?DeleteC='.$response2['ID'].'">Delete</a></td>';
+                    echo '</tr>';
+                        }
+                        $conn = null;
+                    ?>
+  				</tbody>
+		</table>          
       
         </div>
         </div>
-    </div>  
+    
+    </div>
+                    <span> <a href="Home.html.php"> Go Home </a> </span> <br>
+                    <span> <a href="AddProduct.html.php"> Add Products </a> </span> <br>
+                    <span> <a href="AddUser.html.php"> Add Users </a> </span>
   </section>  
 
 

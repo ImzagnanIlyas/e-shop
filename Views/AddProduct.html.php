@@ -5,13 +5,11 @@
     $stm = $conn->query("SELECT COUNT(Prix) FROM produit");
     $response = $stm->fetch();
     $conn = null;
-
 ?>
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-
 >
 <head>
     <!-- Required meta tags-->
@@ -64,23 +62,23 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                 </div>
                 <div class="card-body">
                     <form method="POST"  action="/Controllers/ProductControler.php">
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="name">Référence</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="ref" value="<?php
                                     echo $response[0] + 1;
-                                    ?>">
+                                    ?>" required>
                    					<span class="error" ></span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                             
                          <div class="form-row">
                             <div class="name">Prix </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prix">
+                                    <input class="input--style-5" type="text" name="prix" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -90,7 +88,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Désignation</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="designation">
+                                    <input class="input--style-5" type="text" name="designation" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -100,7 +98,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                          <div class="name"> Catégorie </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="categorie">
+                                    <input class="input--style-5" type="text" name="categorie" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
@@ -111,7 +109,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                         <div class="name">Prixacquisition</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prixacquisition">
+                                    <input class="input--style-5" type="text" name="prixacquisition" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
@@ -121,7 +119,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Age</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="age">
+                                        <input class="input--style-5" type="text" name="age" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -131,7 +129,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Size</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size">
+                                        <input class="input--style-5" type="text" name="size" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -140,7 +138,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Brand</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="brand">
+                                        <input class="input--style-5" type="text" name="brand" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
@@ -156,7 +154,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <input class="input--style-5" type="hidden" name="addP" value="Y">
                             <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button><br>
                             <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                            <span> <a href="EditAndDeleteProducts.html.php"> Manage Products </a> </span>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products And Users </a> </span>
                         </div>
                     </form>
     </div>

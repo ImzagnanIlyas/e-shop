@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once '../Models/DB.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en"
@@ -58,26 +59,28 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <h2 class="title">Edit Produit</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="/Controllers/ProductControler.php">
+                <form method="POST"  action="/Controllers/ClientControler.php">
                         <div class="form-row">
-                            <div class="name">Référence</div>
+                            <div class="name">ID</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="hidden" name="ref" value="<?php
-                                    echo $_GET['Ref'];
+                                    <input class="input--style-5" type="hidden" name="id" value="<?php
+                                    if(isset($_GET['I']))
+                                    echo $_GET['I'];
                                     ?>" required> 
-                                    <label for="refs"><?php echo $_GET['Ref'];?></label><br>
+                                    <label for="id"><?php  if(isset($_GET['I'])) echo $_GET['I'];?></label><br>
                    					<span class="error" ></span>
                                 </div>
                             </div>
                         </div>
-                            
+
                          <div class="form-row">
-                            <div class="name">Prix </div>
+                            <div class="name">Login :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prix" value="<?php
-                                    echo $_GET['Prix'];
+                                    <input class="input--style-5" type="text" name="login" value="<?php
+                                     if(isset($_GET['log']))
+                                    echo $_GET['log'];
                                     ?>" required>
                                     <span class="error" ></span>
                                 </div>
@@ -85,89 +88,108 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                         </div>
 
                         <div class="form-row">
-                            <div class="name">Désignation</div>
+                         <div class="name"> Password :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="designation" value="<?php
-                                    echo $_GET['Des'];
-                                    ?>" required>
-                                    <span class="error" ></span>
-                                </div>
-                            </div>
-						</div>
-
-						 <div class="form-row">
-                         <div class="name"> Catégorie </div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="categorie" value="<?php
-                                    echo $_GET['Cat'];
+                                    <input class="input--style-5" type="password" name="password" value="<?php
+                                    if(isset($_GET['pas']))
+                                    echo $_GET['pas'];
                                     ?>" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                            </div>
 
-
-                        <div class="form-row">
-                        <div class="name">Prixacquisition</div>
+						 <div class="form-row">
+                         <div class="name"> Password Confirmation :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prixacquisition" value="<?php
-                                    echo $_GET['P'];
+                                    <input class="input--style-5" type="password" name="password2" value="<?php
+                                    if(isset($_GET['pas']))
+                                    echo $_GET['pas'];
+                                    ?>" required>
+                                    <span class="error"></span>
+                                </div>
+                            </div>
+                           </div>
+
+                        <div class="form-row">
+                            <div class="name">Role :</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="role" required>
+                                            <option disabled="disabled" selected="selected">Choose role</option>
+                                            <option>admin</option>
+                                            <option>user </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="form-row">
+                        <div class="name">Tele : </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="tele" value="<?php
+                                    if(isset($_GET['Tel']))
+                                    echo $_GET['Tel'];
                                     ?>" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
 						</div>
-
                         <div class="form-row">
-                            <div class="name">Age</div>
+                            <div class="name">Adresse :</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="age" value="<?php
-                                    echo $_GET['Age'];
+                                        <input class="input--style-5" type="text" name="adresse" value="<?php
+                                        if(isset($_GET['Adresse']))
+                                    echo $_GET['Adresse'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="name">Size</div>
+                            </div>
+                            <div class="form-row">
+                            <div class="name">Ville :</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size" value="<?php
-                                    echo $_GET['Size'];
-                                    ?>
-                                    " required>
-                                        <span class="error" ></span>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Brand</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="brand" value="<?php
-                                    echo $_GET['B'];
+                                        <input class="input--style-5" type="text" name="ville" value="<?php
+                                        if(isset($_GET['Ville']))
+                                    echo $_GET['Ville'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Email : </div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="email" name="email" value="<?php
+                                            if(isset($_GET['Email']))
+                                            echo $_GET['Email'];
+                                    ?>" required>
+                                            <span class="error" ></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             <?php
-                                if(isset($_SESSION['error_product'])){
+                                if(isset($_SESSION['error_user'])){
                                 ?>
-                                <span class="error">All Informations are requiredx</span>
+                                <span class="error">Passwords do not match</span> <br>
                             <?php   
-                                $_SESSION['error_product'] = null;   
+                                $_SESSION['error_user'] = null;   
                                 }
                                 ?>
-                            <input class="input--style-5" type="hidden" name="EditP" value="EditP">
+
+                            <input class="input--style-5" type="hidden" name="EditC" value="EditC">
                             <button type="submit" class="btn btn-primary btn-lg">Edit Product</button> <br>
                             <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                            <span> <a href="EditAndDeleteProducts.html.php"> Manage Products </a> </span>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products </a> </span>
                         </div>
                     </form>
     </div>
@@ -189,3 +211,4 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 
 </html>
 <!-- end document-->
+
