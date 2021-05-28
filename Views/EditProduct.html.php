@@ -58,15 +58,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <h2 class="title">Edit Produit</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="/Controllers/ProductControler.php">
+                    <form method="POST"  action="/Controllers/ProductControler.php"  enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="name">Référence</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="hidden" name="ref" value="<?php
-                                    echo $_GET['Ref'];
+                                    if(isset($_GET['R']))
+                                        echo $_GET['R'];
                                     ?>" required> 
-                                    <label for="refs"><?php echo $_GET['Ref'];?></label><br>
+                                    <label for="ref"><?php  if(isset($_GET['R'])) echo $_GET['R'];?></label><br>
                    					<span class="error" ></span>
                                 </div>
                             </div>
@@ -77,7 +78,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="prix" value="<?php
-                                    echo $_GET['Prix'];
+                                    if(isset($_GET['P']))
+                                    echo $_GET['p'];
                                     ?>" required>
                                     <span class="error" ></span>
                                 </div>
@@ -89,7 +91,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="designation" value="<?php
-                                    echo $_GET['Des'];
+                                    if(isset($_GET['D']))
+                                    echo $_GET['D'];
                                     ?>" required>
                                     <span class="error" ></span>
                                 </div>
@@ -101,7 +104,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="categorie" value="<?php
-                                    echo $_GET['Cat'];
+                                    if(isset($_GET['C']))
+                                    echo $_GET['C'];
                                     ?>" required>
                                     <span class="error"></span>
                                 </div>
@@ -114,6 +118,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="prixacquisition" value="<?php
+                                    if(isset($_GET['P']))
                                     echo $_GET['P'];
                                     ?>" required>
                                     <span class="error" ></span>
@@ -126,7 +131,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" name="age" value="<?php
-                                    echo $_GET['Age'];
+                                    if(isset($_GET['A']))
+                                    echo $_GET['A'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
@@ -138,7 +144,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" name="size" value="<?php
-                                    echo $_GET['Size'];
+                                    if(isset($_GET['S']))
+                                    echo $_GET['S'];
                                     ?>
                                     " required>
                                         <span class="error" ></span>
@@ -150,16 +157,30 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" name="brand" value="<?php
-                                    echo $_GET['B'];
+                                        if(isset($_GET['B']))
+                                        echo $_GET['B'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
                         </div>
+                        <div class="form-row">
+                            <div class="name">Product Image</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                            <input type="file" id="fileImage" name="image" accept="image/png, image/jpeg, image/jpg" value="<?php
+                                    if(isset($_GET['I']))
+                                    echo $_GET['I'];
+                                    ?>" required>
+
+                                        </div>
+                                    </div>
+                        </div>
+
                             <?php
                                 if(isset($_SESSION['error_product'])){
                                 ?>
-                                <span class="error">All Informations are requiredx</span>
+                                <span class="error">All Informations are requiredx</span><br>
                             <?php   
                                 $_SESSION['error_product'] = null;   
                                 }

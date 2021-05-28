@@ -47,9 +47,9 @@ function GetAllClients(){
 
 
 //Produit
-function InsertProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixacquisition, $age, $size, $brand){
-    $sql = 'INSERT INTO produit(Prix,Designation,Categorie,Prixacquisition,Age,Size,Brand) VALUES('.$Prix.',"'.$Désignation.'","'.$Catégorie.'",
-    '.$Prixacquisition.','.$age.',"'.$size.'","'.$brand.'")';
+function InsertProduit($Prix,  $Désignation, $Catégorie, $Prixacquisition, $age, $size, $brand,$image){
+    $sql = 'INSERT INTO produit(Prix,Designation,Categorie,Prixacquisition,Age,Size,Brand,Image) VALUES('.$Prix.',"'.$Désignation.'","'.$Catégorie.'",
+    '.$Prixacquisition.','.$age.',"'.$size.'","'.$brand.'","'.$image.'")';
     return $sql;
 }
 
@@ -58,10 +58,11 @@ function DeleteProduit($Référence){
     return $sql;
 }
 
-function UpdateProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixacquisition,$age, $size, $brand){
+function UpdateProduit($Référence , $Prix,  $Désignation, $Catégorie, $Prixacquisition,$age, $size, $brand,$image){
     $sql = 'UPDATE produit SET Prix = '.$Prix.',  Designation = "'.$Désignation.'", Categorie = "'.$Catégorie.'",
-    Prixacquisition = '.$Prixacquisition.', Age = '.$age.',Size = "'.$size.',
-    Brand = "'.$brand.'" WHERE Reference = '.$Référence;
+    Prixacquisition = '.$Prixacquisition.', Age = '.$age.',Size = "'.$size.'",
+    Brand = "'.$brand.'", Image = "'.$image.'"
+     WHERE Reference = '.$Référence;
     return $sql;
 }
 
@@ -71,7 +72,7 @@ function GetProduct($Référence){
 }
 
 function GetAllProduct(){
-    $sql = 'SELECT Reference , Prix, Designation, Categorie, Prixacquisition, Age, Size, Brand FROM produit';
+    $sql = 'SELECT Reference , Prix, Designation, Categorie, Prixacquisition, Age, Size, Brand, Image FROM produit';
     return $sql;
 }
 //Commande

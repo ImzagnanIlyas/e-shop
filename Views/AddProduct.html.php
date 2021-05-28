@@ -61,7 +61,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                     <h2 class="title">Ajouter Produit</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="/Controllers/ProductControler.php">
+                    <form method="POST"  action="/Controllers/ProductControler.php"  enctype="multipart/form-data">
                         <!-- <div class="form-row">
                             <div class="name">Référence</div>
                             <div class="value">
@@ -143,10 +143,19 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                     </div>
                                 </div>
                         </div>
+                        <div class="form-row">
+                            <div class="name">Product Image</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                            <input type="file" id="fileImage" name="image" accept="image/png, image/jpeg, image/jpg" required>
+                                        </div>
+                                    </div>
+                        </div>
+
                             <?php
                                 if(isset($_SESSION['error_product'])){
                                 ?>
-                                <span class="error">All Informations are requiredx</span>
+                                <span class="error">All Informations are required</span> <br>
                             <?php   
                                 $_SESSION['error_product'] = null;   
                                 }

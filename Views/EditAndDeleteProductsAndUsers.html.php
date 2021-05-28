@@ -77,6 +77,7 @@ $stm2 = $conn->query(GetAllClients());
       					<th scope="col">Age</th>
 						<th scope="col">Size</th>
                         <th scope="col">Brand</th>
+                        <th scope="col">Image Link</th>
                         <th scope="col"> </th>
                         <th scope="col"> </th>
              
@@ -95,6 +96,7 @@ $stm2 = $conn->query(GetAllClients());
                         echo '<td >'.$response1['Age'].'</td>';
                         echo '<td >'.$response1['Size'].'</td>';		
                         echo '<td >'.$response1['Brand'].'</td>';	
+                        echo '<td >'.$response1['Image'].'</td>';	
                         echo '<td ><a href="/Controllers/ProductControler.php?EditP='.$response1['Reference'].'">Edit</a></td>';
                         echo '<td ><a href="/Controllers/ProductControler.php?DeleteP='.$response1['Reference'].'">Delete</a></td>';
                     echo '</tr>';
