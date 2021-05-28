@@ -86,11 +86,9 @@ session_start();
                                 <?php
                                 if($_SESSION['role'] == "admin"){
                                 ?>
-                                <a href="AddUser.html">Add User</a>
-                                <a href="#">Delete User</a>
-                                <a href="#">Modify User</a>
+                                <a href="AddUser.html.php">Add User</a>
                                 <a href="AddProduct.html.php">Add Products</a>
-                                <a href="EditAndDeleteProducts.html.php">Manage Products</a>
+                                <a href="EditAndDeleteProductsAndUsers.html.php">Manage Products And Users</a>
 
                                 <?php
                                 }

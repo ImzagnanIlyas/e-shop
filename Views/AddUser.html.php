@@ -1,18 +1,13 @@
 <?php
     session_start();
     include_once '../Models/DB.php';
-    $conn = connectBase();
-    $stm = $conn->query("SELECT COUNT(Prix) FROM produit");
-    $response = $stm->fetch();
-    $conn = null;
-?>
-<?php
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
 >
 <head>
     <!-- Required meta tags-->
@@ -61,112 +56,114 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Ajouter Produit</h2>
+                    <h2 class="title">Ajouter Client</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST"  action="/Controllers/ProductControler.php"  enctype="multipart/form-data">
+                    <form method="POST"  action="/Controllers/ClientControler.php">
                         <!-- <div class="form-row">
-                            <div class="name">Référence</div>
+                            <div class="name">ID :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="ref" value="<?php
-                                    echo $response[0] + 1;
-                                    ?>" required>
+                                    <input class="input--style-5" type="text" name="id">
                    					<span class="error" ></span>
                                 </div>
                             </div>
                         </div> -->
                             
                          <div class="form-row">
-                            <div class="name">Prix </div>
+                            <div class="name">Login :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prix" required>
+                                    <input class="input--style-5" type="text" name="login" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="name">Désignation</div>
+                            <div class="name">Password :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="designation" required>
+                                    <input class="input--style-5" type="password" name="password" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
 						</div>
 
 						 <div class="form-row">
-                         <div class="name"> Catégorie </div>
+                         <div class="name"> Password Confirmation :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="categorie" required>
+                                    <input class="input--style-5" type="password" name="password2" required>
                                     <span class="error"></span>
                                 </div>
                             </div>
                            </div>
 
-
                         <div class="form-row">
-                        <div class="name">Prixacquisition</div>
+                            <div class="name">Role :</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="prixacquisition" required>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="role" required>
+                                            <option disabled="disabled" selected="selected">Choose role</option>
+                                            <option>admin</option>
+                                            <option>user </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="form-row">
+                        <div class="name">Tele : </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="tele" required>
                                     <span class="error" ></span>
                                 </div>
                             </div>
 						</div>
-
                         <div class="form-row">
-                            <div class="name">Age</div>
+                            <div class="name">Adresse :</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="age" required>
+                                        <input class="input--style-5" type="text" name="adresse" required> 
                                         <span class="error" ></span>
                                     </div>
                                 </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="name">Size</div>
+                            </div>
+                            <div class="form-row">
+                            <div class="name">Ville :</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" name="size" required>
+                                        <input class="input--style-5" type="text" name="ville" required>
                                         <span class="error" ></span>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Brand</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" name="brand" required>
-                                        <span class="error" ></span>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Product Image</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                            <input type="file" id="fileImage" name="image" accept="image/png, image/jpeg, image/jpg" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Email : </div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="email" name="email" required>
+                                            <span class="error" ></span>
                                         </div>
                                     </div>
-                        </div>
-
-                            <?php
-                                if(isset($_SESSION['error_product'])){
+                                </div>
+                                <?php
+                                if(isset($_SESSION['error_user'])){
                                 ?>
-                                <span class="error">All Informations are required</span> <br>
+                                <span class="error">Passwords do not match</span> <br>
                             <?php   
-                                $_SESSION['error_product'] = null;   
+                                $_SESSION['error_user'] = null;   
                                 }
                                 ?>
-                            <input class="input--style-5" type="hidden" name="addP" value="Y">
-                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Produit</button><br>
+
+                            <input class="input--style-5" type="hidden" name="addC" value="Y">
+                            <button type="submit" class="btn btn-primary btn-lg">Ajouter Client</button><br>
                             <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products And Users </a> </span>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Users </a> </span>
                         </div>
                     </form>
     </div>

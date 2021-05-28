@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 26, 2021 at 10:19 AM
+-- Generation Time: May 27, 2021 at 08:22 PM
 -- Server version: 5.7.30-log
 -- PHP Version: 7.3.21
 
@@ -86,13 +86,23 @@ CREATE TABLE IF NOT EXISTS `lignedecommande` (
 
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
-  `Référence` int(10) NOT NULL AUTO_INCREMENT,
+  `Reference` int(10) NOT NULL AUTO_INCREMENT,
   `Prix` decimal(10,0) NOT NULL,
-  `Désignation` varchar(20) NOT NULL,
-  `Catégorie` varchar(20) NOT NULL,
+  `Designation` varchar(20) NOT NULL,
+  `Categorie` varchar(20) NOT NULL,
   `Prixacquisition` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`Référence`)
+  `Age` int(10) NOT NULL,
+  `Size` varchar(10) NOT NULL,
+  `Brand` varchar(20) NOT NULL,
+  PRIMARY KEY (`Reference`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produit`
+--
+
+INSERT INTO `produit` (`Reference`, `Prix`, `Designation`, `Categorie`, `Prixacquisition`, `Age`, `Size`, `Brand`) VALUES
+(1, '100', 'as', 'SALAK', '13', 20, 'F', 'ZAA');
 
 --
 -- Constraints for dumped tables
@@ -109,7 +119,7 @@ ALTER TABLE `commande`
 --
 ALTER TABLE `lignedecommande`
   ADD CONSTRAINT `Num_Cmd` FOREIGN KEY (`Numcmd`) REFERENCES `commande` (`Num`),
-  ADD CONSTRAINT `id_produit` FOREIGN KEY (`Refprod`) REFERENCES `produit` (`Référence`);
+  ADD CONSTRAINT `id_produit` FOREIGN KEY (`Refprod`) REFERENCES `produit` (`Reference`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
