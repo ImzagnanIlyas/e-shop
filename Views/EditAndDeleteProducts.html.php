@@ -7,6 +7,9 @@ $stm1 = $conn->query(GetAllProduct());
 
 ?>
 
+<?php
+    include '../Controllers/includes/IncludeFileAtStart.inc.php';
+?>
 <!DOCTYPE html>
 
 

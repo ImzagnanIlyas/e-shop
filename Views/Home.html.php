@@ -1,6 +1,9 @@
 <?php
 session_start();
 ?> 
+<?php
+    include '../Controllers/includes/IncludeFileAtStart.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 

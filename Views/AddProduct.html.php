@@ -7,6 +7,9 @@
     $conn = null;
 
 ?>
+<?php
+    include '../Controllers/includes/IncludeFileAtStart.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="en"
 xmlns:th="http://www.thymleaf.org"

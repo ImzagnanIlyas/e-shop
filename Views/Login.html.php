@@ -2,6 +2,9 @@
 session_start();
 ?>
 
+<?php
+    include '../Controllers/includes/IncludeFileAtStart.inc.php';
+?>
 <!DOCTYPE html>
 <head>
     <!-- Required meta tags-->
@@ -53,12 +56,12 @@ session_start();
                         <h2 class="title">Login</h2>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/Controllers/MainControler.php">
+                        <form method="POST" action="/Controllers/LoginController.php">
  							<div class="form-row">
                                 <div class="name">Login</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" id="login" name="login">
+                                        <input class="input--style-5" type="text" id="login" name="login" value="<?php if(isset($_SESSION["wrongLogin"])) echo $_SESSION["wrongLogin"] ?>" >
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +73,13 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <input type="checkbox" name="remember" id="remember" <?php if(isset($_SESSION["member_login"])) { ?> checked <?php } ?> />
+                                    <label for="remember-me">Remember me</label>
+                                </div>
+                            </div>
+
                             
                             <?php
                             if(isset($_SESSION['error'])){
@@ -77,7 +87,8 @@ session_start();
                             <div class="text-center p-t-115"> 
                             <div class="alert alert-danger">
     							<span >
-  								<strong>Wrong Email or Password!</strong> Make sure your Password and Email are correct
+  								<strong>Identifiant ou mot de passe incorrect</strong><br>
+                                Assurez-vous que votre mot de passe et votre identifiant sont corrects.
     							</span> 
     						</div>
     					   </div>	
@@ -87,7 +98,7 @@ session_start();
                             ?>
 							<br>
                             <div class="text-center p-t-115"> 
-                                <button class="btn btn--radius-2 btn--blue" type="submit" value="submit">Login</button>
+                                <button class="btn btn--radius-2 btn--blue" type="submit" name="auth" value="auth">Login</button>
                             </div>
 							<br>
                             <!-- <div class="text-center p-t-115">
