@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 27, 2021 at 08:22 PM
+-- Generation Time: May 28, 2021 at 07:56 PM
 -- Server version: 5.7.30-log
 -- PHP Version: 7.3.21
 
@@ -38,15 +38,16 @@ CREATE TABLE IF NOT EXISTS `client` (
   `Adresse` varchar(40) NOT NULL,
   `Email` varchar(30) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`ID`, `Role`, `login`, `password`, `Tel`, `Ville`, `Adresse`, `Email`) VALUES
-(6, 'admin', 'oussama', '1234', '0604040404', 'rabat', 'LLLLLLLLLL', 'oussamahennane1@gmail.com'),
-(7, 'user', 'ilyass', '1234', '080808080', 'rabat', 'SSSSSSSSSs', 'oussamahennane1@gmail.com');
+(6, 'admin', 'oussama', '1234', '0604040404', 'rabat', 'LLLLLLLLLL', 'oussamahennane1xxx@gmail.com'),
+(7, 'user', 'ilyass', '12345', '080808080', 'temara', 'SSSSSSSSSsXXXXXXX', 'ilyass123@gmail.com'),
+(9, 'user', 'Ismail', '1234', '097979', 'rabab', 'LSKSKSK', 'oussamahennane1@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -94,15 +95,23 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `Age` int(10) NOT NULL,
   `Size` varchar(10) NOT NULL,
   `Brand` varchar(20) NOT NULL,
+  `Image` varchar(100) NOT NULL,
   PRIMARY KEY (`Reference`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produit`
 --
 
-INSERT INTO `produit` (`Reference`, `Prix`, `Designation`, `Categorie`, `Prixacquisition`, `Age`, `Size`, `Brand`) VALUES
-(1, '100', 'as', 'SALAK', '13', 20, 'F', 'ZAA');
+INSERT INTO `produit` (`Reference`, `Prix`, `Designation`, `Categorie`, `Prixacquisition`, `Age`, `Size`, `Brand`, `Image`) VALUES
+(10, '100', 'DDD', 'Livre', '213', 20, 'F', 'SOS', ''),
+(11, '12', 'DDD', 'SS', '213', 72, 'D', 'SOS', '1767020.jpg'),
+(12, '100', 'DDD', 'SALAK', '213', 20, 'F', 'ZOZO', 'Assets/imgcover.jpg'),
+(13, '12', 'DDD', 'SS', '123', 72, 's', 'ZOZO', 'e-shop/Assets/img/cover.jpg'),
+(14, '100', 'as', 'Livre', '123', 20, 's', 'ZOZO', 'Assets/img/cover.jpg'),
+(15, '12', 'DDD', 'SALAK', '13', 72, 's', 'ZOZO', 'Assets/img/1767020.jpg'),
+(16, '12', 'as', 'SALAK', '312', 12, 'D', 'SOS', 'Assets/img/13876668_1774374292786107_7490765856970375969_n.jpg'),
+(18, '100', 'FFF', 'SS', '13', 12, 'D', 'ZOZO', 'C:/wamp64/www/e-shop/Assets/img/13876668_1774374292786107_7490765856970375969_n.jpg');
 
 --
 -- Constraints for dumped tables
