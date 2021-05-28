@@ -16,7 +16,7 @@
         $r = $respnse->fetch();
         
         $string = 'Ref='.$r['Reference'].'&Prix='.$r['Prix'].'&Des='.$r['Designation'].'&Cat='.$r['Categorie'].'&P='. $r['Prixacquisition'].'&Age='.$r['Age'].'&Size='.$r['Size'].'&B='.$r['Brand'].'';
-        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php?'.$string.'');     
+        header('Location: /Views/EditProduct.html.php?'.$string.'');     
         $conn = null;   
     }
 if(isset($_POST['addP'])){

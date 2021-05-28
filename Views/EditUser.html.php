@@ -145,8 +145,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" name="adresse" value="<?php
-                                        if(isset($_GET['Adresse']))
-                                    echo $_GET['Adresse'];
+                                        if(isset($_GET['Ad']))
+                                    echo $_GET['Ad'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
@@ -157,8 +157,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" name="ville" value="<?php
-                                        if(isset($_GET['Ville']))
-                                    echo $_GET['Ville'];
+                                        if(isset($_GET['Vi']))
+                                    echo $_GET['Vi'];
                                     ?>" required>
                                         <span class="error" ></span>
                                     </div>
@@ -169,8 +169,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                                     <div class="value">
                                         <div class="input-group">
                                             <input class="input--style-5" type="email" name="email" value="<?php
-                                            if(isset($_GET['Email']))
-                                            echo $_GET['Email'];
+                                            if(isset($_GET['Em']))
+                                            echo $_GET['Em'];
                                     ?>" required>
                                             <span class="error" ></span>
                                         </div>
@@ -189,7 +189,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <input class="input--style-5" type="hidden" name="EditC" value="EditC">
                             <button type="submit" class="btn btn-primary btn-lg">Edit Product</button> <br>
                             <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products </a> </span>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products And Users</a> </span>
                         </div>
                     </form>
     </div>

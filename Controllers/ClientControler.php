@@ -15,7 +15,7 @@ if(isset($_GET['EditC'])){
     $respnse = $conn->query(GetClient($_GET['EditC']));
     $r = $respnse->fetch();
     
-    $string = 'I='.$r['ID'].'&R='.$r['Role'].'&log='.$r['login'].'&pas='.$r['password'].'&Tel='. $r['Tel'].'&Ville='.$r['Ville'].'&Adresse='.$r['Adresse'].'&Email='.$r['Email'].'';
+    $string = 'I='.$r['ID'].'&R='.$r['Role'].'&log='.$r['login'].'&pas='.$r['password'].'&Tel='. $r['Tel'].'&Vi='.$r['Ville'].'&Ad='.$r['Adresse'].'&Em='.$r['Email'].'';
     header('Location: /Views/EditUser.html.php?'.$string.'');     
     $conn = null;   
 }

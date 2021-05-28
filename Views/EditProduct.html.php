@@ -167,7 +167,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <input class="input--style-5" type="hidden" name="EditP" value="EditP">
                             <button type="submit" class="btn btn-primary btn-lg">Edit Product</button> <br>
                             <span> <a href="Home.html.php"> Go Home </a> </span> <br>
-                            <span> <a href="EditAndDeleteProducts.html.php"> Manage Products </a> </span>
+                            <span> <a href="EditAndDeleteProductsAndUsers.html.php"> Manage Products And Users</a> </span>
                         </div>
                     </form>
     </div>
