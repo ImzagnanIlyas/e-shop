@@ -1,6 +1,7 @@
 <?php
 include_once 'DB.php';
-session_start();
+if(!isset($_SESSION)) { session_start(); } 
+
 function findUser($login, $password){
     $lien = connectBase();
     $request = "SELECT ID, login, password, Role FROM client WHERE login = ? AND password = ?";
@@ -9,6 +10,7 @@ function findUser($login, $password){
 
     $result = $prep->fetch();
     if($result['login'] == $login && $result['password'] == $password){
+        $_SESSION['id'] = $result['ID'];
         $_SESSION['role'] = $result['Role'];
         return true;
     }else{
@@ -16,6 +18,19 @@ function findUser($login, $password){
     }
 }
 
+function findUserData($login){
+    $lien = connectBase();
+    $request = "SELECT * FROM client WHERE login = ?";
+    $prep  = $lien->prepare($request);
+    $prep->execute(array($login));
+
+    $result = $prep->fetch();
+    if($result){
+        return $result;
+    }else{
+        return NULL;
+    }
+}
 
 //Client
 function InsertClient($id, $role, $login, $password,  $tel, $ville, $adresse, $email){
