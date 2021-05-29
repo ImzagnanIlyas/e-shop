@@ -1,15 +1,11 @@
 <?php
-include_once '../Models/DB.php';
-include('../Models/Operations.php');
+include '../Controllers/includes/IncludeFileAtStart.inc.php';
 $conn = connectBase();
 $stm1 = $conn->query(GetAllProduct());
 $stm2 = $conn->query(GetAllClients());
 
 ?>
 
-<?php
-    include '../Controllers/includes/IncludeFileAtStart.inc.php';
-?>
 <!DOCTYPE html>
 
 
