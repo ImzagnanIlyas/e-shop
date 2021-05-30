@@ -24,9 +24,9 @@ if(isset($_POST['addP'])){
     && isset($_POST['size']) && isset($_POST['brand'])){
         $conn = connectBase();
 
-        $target_dir = "C:/wamp64/www/e-shop/Assets/img/"; //C:\wamp64\www\e-shop\Assets\img
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."Assets/img/product/"; //C:\wamp64\www\e-shop\Assets\img
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
-        move_uploaded_file($_FILES["image"]["tmp_name"][0], $target_file);
+        move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
         $respnse = $conn->exec(InsertProduit($_POST['prix'],$_POST['designation'],$_POST['categorie'],$_POST['prixacquisition'],$_POST['age'],$_POST['size'],
         $_POST['brand'],$target_file));
