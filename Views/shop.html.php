@@ -248,7 +248,7 @@
                                                     <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 5 AND 10">5 - 10</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 10 AND 15">10 - 15</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 15 AND 20">15 - 20</a></li>
-                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 20 AND 30">20 - 30/a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 20 AND 30">20 - 30</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Age= >= 35"BETWEEN >35+</a></li>
                         
                                                     

@@ -77,6 +77,19 @@ if(isset($_GET['Prix'])){
     header('Location: /Views/shop.html.php');
 }
 
+if(isset($_GET['Age'])){
+    if($_SESSION['i'] == 0) {$_SESSION['Filter'] = 'SELECT * FROM produit WHERE ';
+        $_SESSION['Filter'] = $_SESSION['Filter'].' Age '.$_GET['Age'];
+
+        $_SESSION['Count'] = 'SELECT Count(*) FROM produit WHERE ';
+        $_SESSION['Count'] = $_SESSION['Count'].' Age '.$_GET['Age'];
+    }
+    else{ $_SESSION['Filter'] = $_SESSION['Filter'].' AND Age '.$_GET['Age'];
+        $_SESSION['Count'] = $_SESSION['Count'].' AND Age '.$_GET['Age'];}
+    $_SESSION['i']++;
+    header('Location: /Views/shop.html.php');
+}
+
 
 
 

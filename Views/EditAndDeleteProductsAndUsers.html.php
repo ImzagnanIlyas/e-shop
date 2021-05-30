@@ -161,7 +161,8 @@ $stm2 = $conn->query(GetAllClients());
     </div>
                     <span> <a href="Home.html.php"> Go Home </a> </span> <br>
                     <span> <a href="AddProduct.html.php"> Add Products </a> </span> <br>
-                    <span> <a href="AddUser.html.php"> Add Users </a> </span>
+                    <span> <a href="AddUser.html.php"> Add Users </a> </span> <br>
+                    <span><a href="shop.html.php">Shop</a></span>
   </section>  
 
 
