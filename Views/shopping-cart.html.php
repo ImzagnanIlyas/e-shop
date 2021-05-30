@@ -2,8 +2,12 @@
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
     if(!isset($_SESSION)) { session_start(); } 
     $conn = connectBase();
-    $items = '('.implode(",",array_keys($_SESSION['cart'])).')';
-    $query = 'SELECT * FROM produit WHERE Reference IN '.$items;
+    if ($_SESSION['cart']) {
+        $items = '('.implode(",",array_keys($_SESSION['cart'])).')';
+        $query = 'SELECT * FROM produit WHERE Reference IN '.$items;
+    }else{
+        $query = 'SELECT * FROM produit WHERE 0=1';
+    }
     $stm = $conn->query($query);
 ?>
 <!DOCTYPE html>
