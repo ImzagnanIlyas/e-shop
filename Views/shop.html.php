@@ -4,13 +4,37 @@
     include_once '../Models/DB.php';
     $conn = connectBase();
     if(isset($_SESSION['Filter'])) echo $_SESSION['Filter'];
-    if(!isset($_SESSION['Filter'])) $stm1 = $conn->query(GetAllProduct());
-    if(isset($_SESSION['Filter'])) $stm1 = $conn->query($_SESSION['Filter']);
-    
+
     $stm2 = $conn->query(GetCategories());
     $stm3 = $conn->query(GetSizes());
     $stm4 = $conn->query(GetBrands());
 
+    //Pagination
+    $results_per_page = 2;  
+    if (!isset ($_GET['page']) ) {  
+        $page = 1;  
+    } else {  
+        $page = $_GET['page'];  
+    } 
+    $page_first_result = ($page - 1) * $results_per_page; 
+    if(!isset($_SESSION['Filter'])) {
+        $stm5 = $conn->query('SELECT COUNT(*) FROM `produit`');
+        $number_of_result = $stm5->fetch();
+        $number_of_page = ceil ($number_of_result[0] / $results_per_page); 
+        $query = "SELECT * FROM produit LIMIT " . $page_first_result . ',' . $results_per_page; 
+        $stm1 = $conn->query($query);
+    }
+    if(isset($_SESSION['Filter'])) {
+        $stm5 = $conn->query($_SESSION['Count']);
+        $number_of_result = $stm5->fetch();
+        $number_of_page = ceil ($number_of_result[0] / $results_per_page); 
+        $query = "".$_SESSION['Filter']." LIMIT " . $page_first_result . ',' . $results_per_page; 
+        $stm1 = $conn->query($query);
+    }
+
+    echo '<br>'.$number_of_page;
+    //determine which page number visitor is currently on   
+    
 ?>
 
 <!DOCTYPE html>
@@ -270,11 +294,11 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="product__pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
+                            <?php
+                                for($page = 1; $page<= $number_of_page; $page++) {  
+                                    echo '<a href = "shop.html.php?page=' . $page . '">' . $page . ' </a>';  
+                                }  
+                            ?>
                             </div>
                         </div>
                     </div>

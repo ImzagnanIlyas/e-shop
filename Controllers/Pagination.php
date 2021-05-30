@@ -22,7 +22,7 @@
         $page_first_result = ($page-1) * $results_per_page;  
       
         //retrieve the selected results from database   
-        $query = "SELECT *FROM alphabet LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $query = "SELECT * FROM alphabet LIMIT " . $page_first_result . ',' . $results_per_page;  
         $result = mysqli_query($conn, $query);  
           
         //display the retrieved result on the webpage  
