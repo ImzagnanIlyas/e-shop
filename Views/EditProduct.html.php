@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once '../Models/DB.php';
+    if(isset($_SESSION['Filter'])) $_SESSION['Filter'] = NULL;
 ?>
 <?php
     include '../Controllers/includes/IncludeFileAtStart.inc.php';

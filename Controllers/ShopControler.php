@@ -22,6 +22,7 @@ if(isset($_GET['search'])){
     header('Location: /Views/shop.html.php');
 }
 if(isset($_GET['Categorie'])){
+    
     if($_SESSION['i'] == 0) {$_SESSION['Filter'] = 'SELECT * FROM produit WHERE ';
         $_SESSION['Filter'] = $_SESSION['Filter'].' Categorie = "'.$_GET['Categorie'].'"';
     }

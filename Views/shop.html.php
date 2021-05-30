@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../Assets/img/logo.png" alt=""></a>
+                        <a href="Home.html.php"><img src="../Assets/img/hero/logo.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -105,11 +105,6 @@
                             
                         </ul>
                     </nav>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="../Assets/img/icon/search.png" alt=""></a>
-                    </div>
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
@@ -209,7 +204,7 @@
                                             <div class="shop__sidebar__price">
                                                 <ul>
                                                     <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 0 AND 50">0.00 DH - 50.00 DH</a></li>
-                                                    <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 50 AND 100">>50.00 DH - 100.00 DH</a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 50 AND 100">50.00 DH - 100.00 DH</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 100 AND 150">100.00 DH - 150.00 DH</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 150 AND 200">150.00 DH - 200.00 DH</a></li>
                                                     <li><a href="/Controllers/ShopControler.php?Prix= BETWEEN 200 AND 250">200.00 DH - 250.00 DH</a></li>
