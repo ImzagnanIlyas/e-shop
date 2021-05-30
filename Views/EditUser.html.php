@@ -4,11 +4,6 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en"
-xmlns:th="http://www.thymleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-
->
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -56,7 +51,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Edit Produit</h2>
+                    <h2 class="title">Edit User</h2>
                 </div>
                 <div class="card-body">
                 <form method="POST"  action="/Controllers/ClientControler.php">

@@ -1,5 +1,6 @@
 <?php
 include '../Controllers/includes/IncludeFileAtStart.inc.php';
+include_once '../Models/DB.php';
 $conn = connectBase();
 $stm1 = $conn->query(GetAllProduct());
 $stm2 = $conn->query(GetAllClients());

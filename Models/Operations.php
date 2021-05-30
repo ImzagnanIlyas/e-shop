@@ -90,37 +90,66 @@ function GetAllProduct(){
     $sql = 'SELECT Reference , Prix, Designation, Categorie, Prixacquisition, Age, Size, Brand, Image FROM produit';
     return $sql;
 }
+
+function SearchForProduct($array){
+    $string = '';
+    $i = 0;
+    while($array[$i] != NULL){
+            $string = $string.' '.$array[$i].' AND ' ; ++$i;
+    };
+    // for( $i = 0; $i < sizeof($array) ; $i++){ $string = $string.' '.$array[$i].' AND ';};
+    $sql = 'SELECT * FROM produit WHERE '.$string.'';
+    return $sql;
+}
+
+function GetCategories(){
+    $sql = 'SELECT Categorie FROM `produit` GROUP BY Categorie';
+    return $sql;
+}
+
+function GetSizes(){
+    $sql = 'SELECT Size FROM `produit` GROUP BY Size';
+    return $sql;
+}
+
+function GetBrands(){
+    $sql = 'SELECT Brand FROM `produit` GROUP BY Brand';
+    return $sql;
+}
+
+
+
 //Commande
-function InsertCommande($Num  , $Date,  $Numclt){
-    $sql = 'INSERT INTO commande VALUES("'.$Num.'", "'.$Date.'","'.$Numclt.'")';
-    return $sql;
-}
+// function InsertCommande($Num  , $Date,  $Numclt){
+//     $sql = 'INSERT INTO commande VALUES("'.$Num.'", "'.$Date.'","'.$Numclt.'")';
+//     return $sql;
+// }
 
-function DeleteCommande($Num){
-    $sql = 'DELETE FROM commande WHERE Num = '.$Num.'';
-    return $sql;
-}
+// function DeleteCommande($Num){
+//     $sql = 'DELETE FROM commande WHERE Num = '.$Num.'';
+//     return $sql;
+// }
 
-function UpdateCommande($Num  , $Date,  $Numclt){
-    $sql = 'UPDATE commande SET Date = "'.$Date.'",  Numclt = "'.$Numclt.'"
-    WHERE Num = "'.$Num.'"';
-    return $sql;
-}
+// function UpdateCommande($Num  , $Date,  $Numclt){
+//     $sql = 'UPDATE commande SET Date = "'.$Date.'",  Numclt = "'.$Numclt.'"
+//     WHERE Num = "'.$Num.'"';
+//     return $sql;
+// }
 
-//LigneCommande
-function InsertLigneCommande($Refprod , $Numcmd,  $Quantité){
-    $sql = 'INSERT INTO lignedecommande VALUES("'.$Refprod.'", "'.$Numcmd.'","'.$Quantité.'")';
-    return $sql;
-}
+// //LigneCommande
+// function InsertLigneCommande($Refprod , $Numcmd,  $Quantité){
+//     $sql = 'INSERT INTO lignedecommande VALUES("'.$Refprod.'", "'.$Numcmd.'","'.$Quantité.'")';
+//     return $sql;
+// }
 
-function DeleteLigneCommande($Refprod, $Numcmd){
-    $sql = 'DELETE FROM lignedecommande WHERE Refprod = "'.$Refprod.'" AND Numcmd = "'.$Numcmd.'"';
-    return $sql;
-}
+// function DeleteLigneCommande($Refprod, $Numcmd){
+//     $sql = 'DELETE FROM lignedecommande WHERE Refprod = "'.$Refprod.'" AND Numcmd = "'.$Numcmd.'"';
+//     return $sql;
+// }
 
-function UpdateLigneCommande($Refprod, $Numcmd,  $Quantité){
-    $sql = 'UPDATE lignedecommande SET Quantité = "'.$Quantité.'"
-    WHERE Refprod = "'.$Refprod.'" AND Numcmd = "'.$Numcmd.'"';
-    return $sql;
-}
+// function UpdateLigneCommande($Refprod, $Numcmd,  $Quantité){
+//     $sql = 'UPDATE lignedecommande SET Quantité = "'.$Quantité.'"
+//     WHERE Refprod = "'.$Refprod.'" AND Numcmd = "'.$Numcmd.'"';
+//     return $sql;
+// }
 ?>
