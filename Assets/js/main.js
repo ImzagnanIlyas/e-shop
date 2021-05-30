@@ -186,16 +186,20 @@
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
         if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
+            // var newVal = parseFloat(oldValue) + 1;
+            window.location = '/Controllers/CartController.php?increase=' + $button.parent().find('input').attr("name");
         } else {
             // Don't allow decrementing below zero
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
+            // if (oldValue > 0) {
+            //     var newVal = parseFloat(oldValue) - 1;
+            // } else {
+            //     newVal = 0;
+            // }
+            if (oldValue > 1) {
+                window.location = '/Controllers/CartController.php?decrease=' + $button.parent().find('input').attr("name");
             }
         }
-        $button.parent().find('input').val(newVal);
+        //$button.parent().find('input').val(newVal);
     });
 
     /*------------------

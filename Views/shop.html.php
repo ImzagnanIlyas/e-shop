@@ -297,7 +297,8 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><?php echo $response1['Designation'] ?></h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="/Controllers/CartController.php?add=<?php echo $response1['Reference'] ?>&quant=1"
+                                    class="add-cart">+ Add To Cart</a>
                                     <h5><?php echo $response1['Prix'] ?> DH</h5>
                                 </div>
                             </div>

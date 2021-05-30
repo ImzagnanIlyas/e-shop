@@ -1,5 +1,10 @@
 <?php
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
+    if(!isset($_SESSION)) { session_start(); } 
+    $conn = connectBase();
+    $items = '('.implode(",",array_keys($_SESSION['cart'])).')';
+    $query = 'SELECT * FROM produit WHERE Reference IN '.$items;
+    $stm = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -157,6 +162,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="shopping__cart__table">
+                        <form>
                         <table>
                             <thead>
                                 <tr>
@@ -167,7 +173,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <?php
+                                $total = 0;
+                                while($row = $stm->fetch(PDO::FETCH_OBJ)){ ?>
+                                    <tr>
+                                        <td class="product__cart__item">
+                                            <div class="product__cart__item__pic">
+                                                <img src="<?php echo $row->Image ?>" style="width: 90px;" alt="">
+                                            </div>
+                                            <div class="product__cart__item__text">
+                                                <h6><?php echo $row->Designation ?></h6>
+                                                <h5><?php echo $row->Prix ?> MAD</h5>
+                                            </div>
+                                        </td>
+                                        <td class="quantity__item">
+                                            <div class="quantity">
+                                                <div class="pro-qty-2">
+                                                    <input type="text" name="<?php echo $row->Reference; ?>" value="<?php echo $_SESSION['cart'][$row->Reference]; ?>">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="cart__price"><?php echo $row->Prix*$_SESSION['cart'][$row->Reference] ?> MAD</td>
+                                        <td class="cart__close"><a href="/Controllers/CartController.php?delete=<?php echo $row->Reference ?>"><i class="fa fa-close"></i></a></td>
+                                    </tr>
+                                <?php 
+                                $total += $row->Prix*$_SESSION['cart'][$row->Reference];} 
+                                ?>   
+                                <!-- <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
                                             <img src="../Assets/img/shopping-cart/cart-1.jpg" alt="">
@@ -186,67 +218,7 @@
                                     </td>
                                     <td class="cart__price">$ 30.00</td>
                                     <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="../Assets/img/shopping-cart/cart-2.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Diagonal Textured Cap</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 32.50</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="../Assets/img/shopping-cart/cart-3.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 47.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="../Assets/img/shopping-cart/cart-4.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -256,26 +228,27 @@
                                 <a href="#">Continue Shopping</a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
                                 <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
+                    </form>
                 </div>
                 <div class="col-lg-4">
-                    <div class="cart__discount">
+                    <!-- <div class="cart__discount">
                         <h6>Discount codes</h6>
                         <form action="#">
                             <input type="text" placeholder="Coupon code">
                             <button type="submit">Apply</button>
                         </form>
-                    </div>
+                    </div> -->
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <!-- <li>Subtotal <span>$ 169.50</span></li> -->
+                            <li>Total <span><?php echo $total; ?> MAD</span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>
