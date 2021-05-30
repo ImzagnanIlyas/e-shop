@@ -114,7 +114,10 @@
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="role" required>
-                                            <option disabled="disabled" selected="selected">Choose role</option>
+                                            <option selected="selected" ><?php
+                                            if(isset($_GET['R']))
+                                            echo $_GET['R'];
+                                            ?></option>
                                             <option>admin</option>
                                             <option>user </option>
                                         </select>
