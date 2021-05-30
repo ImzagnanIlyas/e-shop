@@ -10,7 +10,7 @@
     $stm4 = $conn->query(GetBrands());
 
     //Pagination
-    $results_per_page = 2;  
+    $results_per_page = 9;  
     if (!isset ($_GET['page']) ) {  
         $page = 1;  
     } else {  
@@ -31,10 +31,6 @@
         $query = "".$_SESSION['Filter']." LIMIT " . $page_first_result . ',' . $results_per_page; 
         $stm1 = $conn->query($query);
     }
-
-    echo '<br>'.$number_of_page;
-    //determine which page number visitor is currently on   
-    
 ?>
 
 <!DOCTYPE html>
@@ -242,6 +238,27 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Age</a>
+                                    </div>
+                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__price">
+                                                <ul>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 0 AND 5">0 - 5</a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 5 AND 10">5 - 10</a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 10 AND 15">10 - 15</a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 15 AND 20">15 - 20</a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= BETWEEN 20 AND 30">20 - 30/a></li>
+                                                    <li><a href="/Controllers/ShopControler.php?Age= >= 35"BETWEEN >35+</a></li>
+                        
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseFour">Size</a>
                                     </div>
                                     <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
@@ -295,8 +312,10 @@
                         <div class="col-lg-12">
                             <div class="product__pagination">
                             <?php
-                                for($page = 1; $page<= $number_of_page; $page++) {  
-                                    echo '<a href = "shop.html.php?page=' . $page . '">' . $page . ' </a>';  
+                            
+                                for($page1 = 1; $page1<= $number_of_page; $page1++) {  
+                                    if($page1 == $page) echo '<a class="active" href = "shop.html.php?page=' . $page1 . '">' . $page1 . ' </a>';  
+                                    else  echo '<a href = "shop.html.php?page=' . $page1 . '">' . $page1 . ' </a>';  
                                 }  
                             ?>
                             </div>
