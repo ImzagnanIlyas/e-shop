@@ -300,6 +300,8 @@
                                     <a href="/Controllers/CartController.php?add=<?php echo $response1['Reference'] ?>&quant=1"
                                     class="add-cart">+ Add To Cart</a>
                                     <h5><?php echo $response1['Prix'] ?> DH</h5>
+                                    <h6>Brand : <?php echo $response1['Brand'] ?></h6>
+                                    <h6>Size : <?php echo $response1['Size'] ?></h6>
                                 </div>
                             </div>
                         </div>
