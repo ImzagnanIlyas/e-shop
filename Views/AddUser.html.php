@@ -1,4 +1,6 @@
 <?php
+    include '../Controllers/PermissionsController.php';
+adminPermission();
     session_start();
     include_once '../Models/DB.php';
     include '../Controllers/includes/IncludeFileAtStart.inc.php';

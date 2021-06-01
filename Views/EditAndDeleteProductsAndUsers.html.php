@@ -1,4 +1,6 @@
 <?php
+include '../Controllers/PermissionsController.php';
+adminPermission();
 include '../Controllers/includes/IncludeFileAtStart.inc.php';
 include_once '../Models/DB.php';
 if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}

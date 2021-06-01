@@ -7,7 +7,7 @@
      */
     function adminPermission(){
         if ( $_SESSION['role'] != "admin") {
-            header("Localisation : /Views/errors/403.html.php");
+            header("Location: /Views/errors/403.html.php");
         }
     }
     
@@ -17,7 +17,7 @@
      */
     function clientPermission(){
         if ( $_SESSION['role'] != "user") {
-            header("Localisation : /Views/errors/403.html.php");
+            header("Location: /Views/errors/403.html.php");
         }
     }
 ?>
