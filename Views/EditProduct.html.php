@@ -174,11 +174,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                             <div class="name">Product Image</div>
                                 <div class="value">
                                     <div class="input-group">
-                                            <input type="file" id="fileImage" name="image" accept="image/png, image/jpeg, image/jpg" value="<?php
-                                    if(isset($_GET['I']))
-                                    echo $_GET['I'];
-                                    ?>" required>
-
+                                            <input type="file" id="fileImage" name="image" accept="image/png, image/jpeg, image/jpg" required>
                                         </div>
                                     </div>
                         </div>
