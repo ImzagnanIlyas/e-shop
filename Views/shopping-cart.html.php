@@ -254,7 +254,7 @@
                             <!-- <li>Subtotal <span>$ 169.50</span></li> -->
                             <li>Total <span><?php echo $total; ?> MAD</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="/Views/checkout.html.php" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

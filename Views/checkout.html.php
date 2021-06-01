@@ -1,5 +1,23 @@
 <?php
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
+    $mustLogin = false;
+    $ordre = true;
+    $end = false;
+    if(isset($_SESSION['login'])) $mustLogin = false;
+
+    if(!isset($_SESSION)) { session_start(); } 
+    $conn = connectBase();
+    if ($_SESSION['cart']) {
+        $items = '('.implode(",",array_keys($_SESSION['cart'])).')';
+        $query = 'SELECT * FROM produit WHERE Reference IN '.$items;
+    }else{
+        $query = 'SELECT * FROM produit WHERE 0=1';
+        $ordre = false;
+        if (isset($_GET['end'])) {
+            $end = true;
+        }
+    }
+    $stm = $conn->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -19,6 +37,7 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="../Assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../Assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../Assets/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="../Assets/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../Assets/css/nice-select.css" type="text/css">
@@ -152,12 +171,13 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Checkout Section Begin -->
-    <section class="checkout spad">
+    <section class="checkout spad" style="padding-top: 50px;">
         <div class="container">
+        <?php if($ordre){ ?>
             <div class="checkout__form">
-                <form action="#">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-6">
+                <form action="/Controllers/OrdreController.php" method="POST">
+                    <div class="row justify-content-center">
+                        <!-- <div class="col-lg-8 col-md-6">
                             <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
                             here</a> to enter your code</h6>
                             <h6 class="checkout__title">Billing Details</h6>
@@ -235,50 +255,76 @@
                                 <input type="text"
                                 placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
+                        </div> -->
+                        <div class="col-lg-7 col-md-6">
+                            <?php if($mustLogin){ ?>
+                                <a href="/Views/Login.html.php">
+                                <h6 class="coupon__code">
+                                    <span class="icon_tag_alt"></span> 
+                                    Pour finaliser votre commande, vous devez vous connecter ou vous inscrire 
+                                </h6>
+                                </a>
+                            <?php } ?>
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
+                                    <?php
+                                        $total = 0;
+                                        while($row = $stm->fetch(PDO::FETCH_OBJ)){ 
+                                    ?>
+                                        <li>&#10095; <?php echo $row->Designation." (x".$_SESSION['cart'][$row->Reference].")" ?> <span><?php echo $row->Prix*$_SESSION['cart'][$row->Reference] ?> MAD</span></li>
+                                    <?php 
+                                        $total += $row->Prix*$_SESSION['cart'][$row->Reference];} 
+                                    ?>  
+                                    <!-- <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
                                     <li>02. German chocolate <span>$ 170.0</span></li>
                                     <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li> -->
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                                    <!-- <li>Subtotal <span>$750.99</span></li> -->
+                                    <li>Total <span><?php echo $total; ?> MAD</span></li>
                                 </ul>
-                                <div class="checkout__input__checkbox">
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
                                         Create an account?
                                         <input type="checkbox" id="acc-or">
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
+                                </div> -->
+                                <p>Choisissez votre méthode de paiement :</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked <?php if($mustLogin){ echo "disabled"; } ?> >
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        À la livraison
                                     </label>
                                 </div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" <?php if($mustLogin){ echo "disabled"; } ?> >
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Carte bancaire
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" name="ordre" class="site-btn" <?php if($mustLogin){ echo "disabled"; } ?> >PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+        <?php }else{ ?>
+            <?php if($end){ ?>
+                <div class="alert alert-success" role="alert">
+                    <h1 class="alert-heading text-center"><i class="fas fa-check-circle"></i></h1>
+                    <hr>
+                    <h4 class="text-center" >Votre commande a été passée avec succès</h4>
+                </div>
+            <?php }else{ ?>
+                <div class="alert alert-warning" role="alert">
+                    Ajouter des produits à votre panier d'abord.
+                </div>
+            <?php } ?>
+        <?php } ?>
         </div>
     </section>
     <!-- Checkout Section End -->

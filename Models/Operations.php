@@ -120,10 +120,10 @@ function GetBrands(){
 
 
 //Commande
-// function InsertCommande($Num  , $Date,  $Numclt){
-//     $sql = 'INSERT INTO commande VALUES("'.$Num.'", "'.$Date.'","'.$Numclt.'")';
-//     return $sql;
-// }
+function InsertCommande($Num  , $Date,  $Numclt){
+    $sql = 'INSERT INTO commande VALUES("'.$Num.'", "'.$Date.'","'.$Numclt.'")';
+    return $sql;
+}
 
 // function DeleteCommande($Num){
 //     $sql = 'DELETE FROM commande WHERE Num = '.$Num.'';
@@ -137,10 +137,10 @@ function GetBrands(){
 // }
 
 // //LigneCommande
-// function InsertLigneCommande($Refprod , $Numcmd,  $Quantité){
-//     $sql = 'INSERT INTO lignedecommande VALUES("'.$Refprod.'", "'.$Numcmd.'","'.$Quantité.'")';
-//     return $sql;
-// }
+function InsertLigneCommande($Refprod , $Numcmd,  $Quantité){
+    $sql = 'INSERT INTO lignedecommande VALUES("'.$Refprod.'", "'.$Numcmd.'","'.$Quantité.'")';
+    return $sql;
+}
 
 // function DeleteLigneCommande($Refprod, $Numcmd){
 //     $sql = 'DELETE FROM lignedecommande WHERE Refprod = "'.$Refprod.'" AND Numcmd = "'.$Numcmd.'"';
