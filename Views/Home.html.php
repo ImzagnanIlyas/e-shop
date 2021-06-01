@@ -60,17 +60,13 @@
                                 if(isset($_SESSION['role'])){
                                 ?>
                                 <a href="/Controllers/LogOut.php">Sign Out</a>
-                                <?php
-                                if($_SESSION['role'] == "admin"){
-                                ?>
+                                <?php if($_SESSION['role'] == "admin"){ ?>            
                                 <a href="AddUser.html.php">Add User</a>
                                 <a href="AddProduct.html.php">Add Products</a>
                                 <a href="EditAndDeleteProductsAndUsers.html.php">Manage Products And Users</a>
-
-                                <?php
-                                }
-                                }
-                                ?>   
+                                <?php }}?>   
+                                
+                                
                                 
                             </div>
                         </div>

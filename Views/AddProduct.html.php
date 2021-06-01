@@ -1,8 +1,9 @@
 <?php
     include '../Controllers/PermissionsController.php';
-adminPermission();
-    session_start();
+    adminPermission();
+    if(!isset($_SESSION)) { session_start(); } 
     include_once '../Models/DB.php';
+    if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
     $conn = connectBase();
     $stm = $conn->query("SELECT COUNT(Prix) FROM produit");
     $response = $stm->fetch();

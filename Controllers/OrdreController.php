@@ -4,7 +4,6 @@
     $conn = connectBase();
 
     if (isset($_POST['ordre'])) {
-
         // Insert Commande
         $respnse = $conn->exec(InsertCommande(0,date('Y-m-d'),$_SESSION['id']));
         $idCommande = $conn->lastInsertId();

@@ -1,6 +1,8 @@
 <?php
-session_start();
-$_SESSION['lastLink'] = $_SERVER['HTTP_REFERER'];
+if(!isset($_SESSION)) { session_start(); } 
+if($_SERVER['HTTP_REFERER'] != "http://e-shop/Views/Register.html.php") 
+    $_SESSION['lastLink'] = $_SERVER['HTTP_REFERER'];
+if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
 ?>
 
 <?php
@@ -98,6 +100,9 @@ $_SESSION['lastLink'] = $_SERVER['HTTP_REFERER'];
                            $_SESSION['error'] = null;                
                             ?>
 							<br>
+                            <strong>Don't have an account ?, </strong>
+                                <a href="Register.html.php">Creat One.</a> 
+    							</span> <br><br><br>
                             <div class="text-center p-t-115"> 
                                 <button class="btn btn--radius-2 btn--blue" type="submit" name="auth" value="auth">Login</button>
                             </div>

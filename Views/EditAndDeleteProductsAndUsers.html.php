@@ -3,6 +3,7 @@ include '../Controllers/PermissionsController.php';
 adminPermission();
 include '../Controllers/includes/IncludeFileAtStart.inc.php';
 include_once '../Models/DB.php';
+if(!isset($_SESSION)) { session_start(); } 
 if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
 $conn = connectBase();
 $stm1 = $conn->query(GetAllProduct());

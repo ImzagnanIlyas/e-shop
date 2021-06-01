@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)) { session_start(); } 
     include('../Models/Operations.php');
     include_once '../Models/DB.php';
     

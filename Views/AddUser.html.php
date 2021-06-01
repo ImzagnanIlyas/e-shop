@@ -1,9 +1,10 @@
 <?php
     include '../Controllers/PermissionsController.php';
-adminPermission();
-    session_start();
+    adminPermission();
+    if(!isset($_SESSION)) { session_start(); } 
     include_once '../Models/DB.php';
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
+    if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
 ?>
 <!DOCTYPE html>
 <html lang="en"
