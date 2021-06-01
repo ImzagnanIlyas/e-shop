@@ -90,10 +90,7 @@
                         <ul>
                             <li class="active"><a href="Home.html.php">Home</a></li>
                             <li><a href="shop.html.php">Shop</a></li>
-                            <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                            <li><a href="./shop-details.html">Shop Details</a></li>
-                            <li><a href="./checkout.html">Check Out</a></li>
-                            
+                            <li><a href="./shopping-cart.html.php">Shopping Cart</a></li>
                         </ul>
                     </nav>
                 </div>
