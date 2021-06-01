@@ -25,7 +25,7 @@
                     setcookie ("member_login","",time() - 3600,"/");
                 }
             }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: ' . $_SESSION['lastLink']);
         }else{   
             $_SESSION['wrongLogin'] = $login;
             $_SESSION['error'] = "Identifiant ou mot de passe incorrect";

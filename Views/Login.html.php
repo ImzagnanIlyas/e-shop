@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['lastLink'] = $_SERVER['HTTP_REFERER'];
 ?>
 
 <?php
