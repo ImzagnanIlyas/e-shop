@@ -1,6 +1,6 @@
 <?php
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
-    $mustLogin = false;
+    $mustLogin = true;
     $ordre = true;
     $end = false;
     if(isset($_SESSION['login'])) $mustLogin = false;
