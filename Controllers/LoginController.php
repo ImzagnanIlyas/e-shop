@@ -2,6 +2,7 @@
     include('../Models/Operations.php');
     include_once '../Models/DB.php';
     if(!isset($_SESSION)) { session_start(); } 
+    
     // if(isset($_POST['login']) && isset($_POST['password'])){
     //         // $login = $_POST['login'];
     //         // $password = $_POST['password'];

@@ -3,7 +3,7 @@
     include '../Controllers/includes/IncludeFileAtStart.inc.php';
     include_once '../Models/DB.php';
     $conn = connectBase();
-    if(isset($_SESSION['Filter'])) echo $_SESSION['Filter'];
+ 
 
     $stm2 = $conn->query(GetCategories());
     $stm3 = $conn->query(GetSizes());

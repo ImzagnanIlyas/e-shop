@@ -61,6 +61,7 @@ if(isset($_GET['Size'])){
     }
     else{ $_SESSION['Filter'] = $_SESSION['Filter'].' AND Size = "'.$_GET['Size'].'"';
         $_SESSION['Count'] = $_SESSION['Count'].' AND Size = "'.$_GET['Size'].'"';}
+        
     $_SESSION['i']++;
     header('Location: /Views/shop.html.php');
 }
@@ -73,6 +74,7 @@ if(isset($_GET['Prix'])){
     }
     else{ $_SESSION['Filter'] = $_SESSION['Filter'].' AND Prix '.$_GET['Prix'];
         $_SESSION['Count'] = $_SESSION['Count'].' AND Prix '.$_GET['Prix'];}
+
     $_SESSION['i']++;
     header('Location: /Views/shop.html.php');
 }
@@ -86,6 +88,7 @@ if(isset($_GET['Age'])){
     }
     else{ $_SESSION['Filter'] = $_SESSION['Filter'].' AND Age '.$_GET['Age'];
         $_SESSION['Count'] = $_SESSION['Count'].' AND Age '.$_GET['Age'];}
+
     $_SESSION['i']++;
     header('Location: /Views/shop.html.php');
 }

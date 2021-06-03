@@ -26,8 +26,9 @@ if(isset($_POST['addC'])){
     && $_POST['password'] == $_POST['password2']){
         $conn = connectBase();
         $respnse = $conn->exec(InsertClient($_POST['role'],$_POST['login'],$_POST['password'],$_POST['tele'],$_POST['ville'],$_POST['adresse'],$_POST['email']));
-        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
         $conn = null;
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
+        
     }else{
         $_SESSION['error_user'] = "Passwords do not match";
         header('Location: /Views/AddUser.html.php');
@@ -40,9 +41,9 @@ if(isset($_POST['addC'])){
         $conn = connectBase();
         $respnse = $conn->exec(UpdateClient($_POST['id'],$_POST['role'],$_POST['login'],
         $_POST['password'],$_POST['tele'],$_POST['ville'],$_POST['adresse'],$_POST['email']));
-
-        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
         $conn = null;
+        header('Location: /Views/EditAndDeleteProductsAndUsers.html.php');
+        
     }else{
         $_SESSION['error_user'] = "Passwords do not match";
         header('Location: /Views/EditUser.html.php');
