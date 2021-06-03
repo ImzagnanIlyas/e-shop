@@ -78,7 +78,7 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-5">
+                    <div class="col-lg-10 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
                                 <?php
@@ -180,6 +180,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                 <?php if (empty($_SESSION['cart'])){ ?>
+                                    <tr>
+                                        <div class="alert alert-warning" role="alert">
+                                            Ajouter des produits à votre panier d'abord.
+                                        </div>
+                                    </tr>
+                                <?php } ?>
                                 <?php
                                 $total = 0;
                                 while($row = $stm->fetch(PDO::FETCH_OBJ)){ ?>
@@ -257,7 +264,7 @@
                             <!-- <li>Subtotal <span>$ 169.50</span></li> -->
                             <li>Total <span><?php echo $total; ?> MAD</span></li>
                         </ul>
-                        <a href="/Views/checkout.html.php" class="primary-btn">Proceed to checkout</a>
+                        <a href="/Views/checkout.html.php" class="primary-btn" <?php if (empty($_SESSION['cart'])) echo "hidden"; ?> >Proceed to checkout</a>
                     </div>
                 </div>
             </div>

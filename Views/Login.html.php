@@ -79,7 +79,7 @@ if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
                             <div class="form-row">
                                 <div class="input-group">
                                     <input type="checkbox" name="remember" id="remember" <?php if(isset($_SESSION["member_login"])) { ?> checked <?php } ?> />
-                                    <label for="remember-me">Remember me</label>
+                                    <label for="remember-me">Se souvenir de moi</label>
                                 </div>
                             </div>
 
@@ -100,8 +100,8 @@ if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
                            $_SESSION['error'] = null;                
                             ?>
 							<br>
-                            <strong>Don't have an account ?, </strong>
-                                <a href="Register.html.php">Creat One.</a> 
+                            <strong>Vous n'avez pas de compte ?</strong>
+                                <a href="Register.html.php">Inscription.</a> 
     							</span> <br><br><br>
                             <div class="text-center p-t-115"> 
                                 <button class="btn btn--radius-2 btn--blue" type="submit" name="auth" value="auth">Login</button>

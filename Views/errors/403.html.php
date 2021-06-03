@@ -62,7 +62,7 @@ session_start();
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-5">
+                    <div class="col-lg-10 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
                                 <?php
