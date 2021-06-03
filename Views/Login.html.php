@@ -1,12 +1,12 @@
 <?php
 if(!isset($_SESSION)) { session_start(); } 
+
 if($_SERVER['HTTP_REFERER'] != "http://e-shop/Views/Register.html.php") 
     $_SESSION['lastLink'] = $_SERVER['HTTP_REFERER'];
-if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
-?>
 
-<?php
-    include '../Controllers/includes/IncludeFileAtStart.inc.php';
+if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
+
+include '../Controllers/includes/IncludeFileAtStart.inc.php';
 ?>
 <!DOCTYPE html>
 <head>
@@ -18,7 +18,7 @@ if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Register Form</title>
+    <title>Login</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -106,6 +106,8 @@ if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
                             <div class="text-center p-t-115"> 
                                 <button class="btn btn--radius-2 btn--blue" type="submit" name="auth" value="auth">Login</button>
                             </div>
+                            <br>
+                            <span> <a href="Home.html.php"> Go Home </a> </span> <br>
 							<br>
                             <!-- <div class="text-center p-t-115">
 								<span class="txt1">

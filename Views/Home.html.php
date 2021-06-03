@@ -52,10 +52,10 @@
                                 <?php
                                 }
                                 ?>   
-                            </div>
-                        </div>
-                        <div class="header__top__right">
-                            <div class="header__top__links">
+                            <!-- </div>
+                        </div> -->
+                        <!-- <div class="header__top__right">
+                            <div class="header__top__links"> -->
                                 <?php
                                 if(isset($_SESSION['role'])){
                                 ?>
@@ -64,11 +64,8 @@
                                 <a href="AddUser.html.php">Add User</a>
                                 <a href="AddProduct.html.php">Add Products</a>
                                 <a href="EditAndDeleteProductsAndUsers.html.php">Manage Products And Users</a>
-                                <?php }}?>   
-                                
-                                
-                                
-                            </div>
+                                <?php }}?>              
+                         </div>
                         </div>
                     </div>
                 </div>

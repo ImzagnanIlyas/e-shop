@@ -42,7 +42,7 @@ if(isset($_POST['addP'])){
     && isset($_POST['size']) && isset($_POST['brand'])){
         $conn = connectBase();
         
-        $target_dir = "../Assets/img/product/"; //C:\wamp64\www\e-shop\Assets\img
+        $target_dir = "../Assets/img/product/"; 
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 

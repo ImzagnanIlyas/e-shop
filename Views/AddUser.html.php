@@ -7,11 +7,8 @@
     if(isset($_SESSION['Filter'])){ $_SESSION['Filter'] = NULL;}
 ?>
 <!DOCTYPE html>
-<html lang="en"
-xmlns:th="http://www.thymleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en">
 
->
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
